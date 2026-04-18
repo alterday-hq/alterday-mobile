@@ -6,6 +6,13 @@ import '../../features/auth/screens/login_screen.dart';
 import '../../features/auth/screens/register_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
+CustomTransitionPage<void> _fadePage(Widget child) => CustomTransitionPage(
+      child: child,
+      transitionDuration: const Duration(milliseconds: 400),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          FadeTransition(opacity: animation, child: child),
+    );
+
 final appRouterProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authStateProvider);
 
@@ -27,13 +34,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       return null;
     },
     routes: [
-      GoRoute(path: '/splash', builder: (ctx, _) => const SplashScreen()),
-      GoRoute(path: '/login', builder: (ctx, _) => const LoginScreen()),
-      GoRoute(path: '/register', builder: (ctx, _) => const RegisterScreen()),
+      GoRoute(path: '/splash', pageBuilder: (context, state) => _fadePage(const SplashScreen())),
+      GoRoute(path: '/login', pageBuilder: (context, state) => _fadePage(const LoginScreen())),
+      GoRoute(path: '/register', pageBuilder: (context, state) => _fadePage(const RegisterScreen())),
       GoRoute(
         path: '/home',
-        builder: (ctx, _) => const Scaffold(
-          body: Center(child: Text('Home — coming soon')),
+        pageBuilder: (context, state) => _fadePage(
+          const Scaffold(body: Center(child: Text('Home — coming soon'))),
         ),
       ),
     ],

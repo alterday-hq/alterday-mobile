@@ -5,8 +5,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SizedBox.shrink(),
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: const SizedBox.shrink(),
     );
   }
 }
