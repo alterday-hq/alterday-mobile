@@ -49,8 +49,11 @@
   "authRegisterHeadline4": "possibility.",
   "@authRegisterHeadline4": {},
 
-  "authRegisterSubtitle": "Start your simulation. Create your identity in the system.",
-  "@authRegisterSubtitle": {},
+  "authRegisterSubtitle1": "Start your simulation.",
+  "@authRegisterSubtitle1": {},
+
+  "authRegisterSubtitle2": "Create your identity in the system.",
+  "@authRegisterSubtitle2": {},
 
   "authRegisterSubjectLabel": "Subject Name",
   "@authRegisterSubjectLabel": {},

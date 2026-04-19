@@ -194,11 +194,17 @@ abstract class AppLocalizations {
   /// **'possibility.'**
   String get authRegisterHeadline4;
 
-  /// No description provided for @authRegisterSubtitle.
+  /// No description provided for @authRegisterSubtitle1.
   ///
   /// In en, this message translates to:
-  /// **'Start your simulation. Create your identity in the system.'**
-  String get authRegisterSubtitle;
+  /// **'Start your simulation.'**
+  String get authRegisterSubtitle1;
+
+  /// No description provided for @authRegisterSubtitle2.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your identity in the system.'**
+  String get authRegisterSubtitle2;
 
   /// No description provided for @authRegisterSubjectLabel.
   ///

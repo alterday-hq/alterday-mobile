@@ -58,8 +58,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authRegisterHeadline4 => 'possibility.';
 
   @override
-  String get authRegisterSubtitle =>
-      'Start your simulation. Create your identity in the system.';
+  String get authRegisterSubtitle1 => 'Start your simulation.';
+
+  @override
+  String get authRegisterSubtitle2 => 'Create your identity in the system.';
 
   @override
   String get authRegisterSubjectLabel => 'Subject Name';
