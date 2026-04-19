@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/providers/auth_provider.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/auth/screens/register_screen.dart';
-import '../../features/splash/splash_screen.dart';
 
 CustomTransitionPage<void> _fadePage(Widget child) => CustomTransitionPage(
       child: child,
@@ -13,16 +12,21 @@ CustomTransitionPage<void> _fadePage(Widget child) => CustomTransitionPage(
           FadeTransition(opacity: animation, child: child),
     );
 
+class _RouterNotifier extends ChangeNotifier {
+  _RouterNotifier(Ref ref) {
+    ref.listen(authStateProvider, (_, _) => notifyListeners());
+  }
+}
+
 final appRouterProvider = Provider<GoRouter>((ref) {
-  final authState = ref.watch(authStateProvider);
+  final notifier = _RouterNotifier(ref);
 
   return GoRouter(
-    initialLocation: '/splash',
+    initialLocation: '/login',
+    refreshListenable: notifier,
     redirect: (context, state) {
-      final isLoading = authState.isLoading;
-      final isSplash = state.matchedLocation == '/splash';
-
-      if (isLoading || isSplash) return null;
+      final authState = ref.read(authStateProvider);
+      if (authState.isLoading) return null;
 
       final session = authState.asData?.value.session;
       final isAuthed = session != null && session.user.emailConfirmedAt != null;
@@ -34,7 +38,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       return null;
     },
     routes: [
-      GoRoute(path: '/splash', pageBuilder: (context, state) => _fadePage(const SplashScreen())),
       GoRoute(path: '/login', pageBuilder: (context, state) => _fadePage(const LoginScreen())),
       GoRoute(path: '/register', pageBuilder: (context, state) => _fadePage(const RegisterScreen())),
       GoRoute(

@@ -13,7 +13,7 @@ class DecryptedText extends StatefulWidget {
 
   final String text;
   final TextStyle? style;
-  final int speed; // ms per character reveal
+  final int speed;
   final TextAlign? textAlign;
 
   @override
@@ -30,11 +30,25 @@ class _DecryptedTextState extends State<DecryptedText> {
   @override
   void initState() {
     super.initState();
-    _chars = widget.text.split('').map((c) {
+    _start(widget.text);
+  }
+
+  @override
+  void didUpdateWidget(DecryptedText oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.text != widget.text) {
+      _timer?.cancel();
+      _revealed = 0;
+      _start(widget.text);
+    }
+  }
+
+  void _start(String text) {
+    _chars = text.split('').map((c) {
       return c == ' ' ? ' ' : _pool[_rng.nextInt(_pool.length)];
     }).toList();
     _timer = Timer.periodic(Duration(milliseconds: widget.speed), (_) {
-      if (_revealed >= widget.text.length) {
+      if (_revealed >= _chars.length || _revealed >= widget.text.length) {
         _timer?.cancel();
         return;
       }

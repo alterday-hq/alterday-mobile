@@ -8,6 +8,7 @@ import 'core/providers/theme_provider.dart';
 import 'core/router/app_router.dart';
 import 'core/supabase/supabase_client.dart';
 import 'core/theme/app_theme.dart';
+import 'features/splash/splash_screen.dart';
 import 'l10n/app_localizations.dart';
 
 void main() async {
@@ -47,6 +48,12 @@ class AlterDayApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       routerConfig: router,
+      builder: (context, child) => Stack(
+        children: [
+          child!,
+          const SplashOverlay(),
+        ],
+      ),
     );
   }
 }
