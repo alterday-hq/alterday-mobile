@@ -1,0 +1,108 @@
+{
+  "@@locale": "en",
+
+  "authLoginTitle": "Login",
+  "@authLoginTitle": { "description": "Login screen title" },
+
+  "authLoginSubtitle": "Enter your credentials to begin the synchronization process.",
+  "@authLoginSubtitle": { "description": "Login screen subtitle" },
+
+  "authLoginEmailLabel": "Digital Address",
+  "@authLoginEmailLabel": {},
+
+  "authLoginEmailPlaceholder": "user@network.sys",
+  "@authLoginEmailPlaceholder": {},
+
+  "authLoginPasswordLabel": "Access Key",
+  "@authLoginPasswordLabel": {},
+
+  "authLoginPasswordPlaceholder": "••••••••",
+  "@authLoginPasswordPlaceholder": {},
+
+  "authLoginForgotPassword": "Key recovery protocol →",
+  "@authLoginForgotPassword": {},
+
+  "authLoginSubmit": "Establish Connection",
+  "@authLoginSubmit": {},
+
+  "authLoginOrContinueWith": "alternative authentication",
+  "@authLoginOrContinueWith": {},
+
+  "authLoginNoAccount": "Not registered in the system?",
+  "@authLoginNoAccount": {},
+
+  "authLoginSignUp": "Initialize Account",
+  "@authLoginSignUp": {},
+
+  "authRegisterTitle": "Register",
+  "@authRegisterTitle": {},
+
+  "authRegisterHeadline1": "Quantify",
+  "@authRegisterHeadline1": {},
+
+  "authRegisterHeadline2": "every",
+  "@authRegisterHeadline2": {},
+
+  "authRegisterHeadline3": "alternate",
+  "@authRegisterHeadline3": {},
+
+  "authRegisterHeadline4": "possibility.",
+  "@authRegisterHeadline4": {},
+
+  "authRegisterSubtitle1": "Start your simulation.",
+  "@authRegisterSubtitle1": {},
+
+  "authRegisterSubtitle2": "Create your identity in the system.",
+  "@authRegisterSubtitle2": {},
+
+  "authRegisterSubjectLabel": "Subject Name",
+  "@authRegisterSubjectLabel": {},
+
+  "authRegisterSubjectPlaceholder": "subject_name",
+  "@authRegisterSubjectPlaceholder": {},
+
+  "authRegisterEmailLabel": "Digital Address",
+  "@authRegisterEmailLabel": {},
+
+  "authRegisterEmailPlaceholder": "user@network.sys",
+  "@authRegisterEmailPlaceholder": {},
+
+  "authRegisterPasswordLabel": "Access Key",
+  "@authRegisterPasswordLabel": {},
+
+  "authRegisterPasswordPlaceholder": "••••••••",
+  "@authRegisterPasswordPlaceholder": {},
+
+  "authRegisterConfirmLabel": "Verify Access Key",
+  "@authRegisterConfirmLabel": {},
+
+  "authRegisterConfirmPlaceholder": "••••••••",
+  "@authRegisterConfirmPlaceholder": {},
+
+  "authRegisterSubmit": "Initialize Account",
+  "@authRegisterSubmit": {},
+
+  "authRegisterOrContinueWith": "alternative authentication",
+  "@authRegisterOrContinueWith": {},
+
+  "authRegisterHasAccount": "Already in the system?",
+  "@authRegisterHasAccount": {},
+
+  "authRegisterSignIn": "Establish Connection",
+  "@authRegisterSignIn": {},
+
+  "authRegisterStatsJoined": "identities initialized",
+  "@authRegisterStatsJoined": {},
+
+  "commonShowPassword": "Reveal access key",
+  "@commonShowPassword": {},
+
+  "commonHidePassword": "Conceal access key",
+  "@commonHidePassword": {},
+
+  "commonToggleTheme": "Toggle theme",
+  "@commonToggleTheme": {},
+
+  "commonSwitchLanguage": "Switch language",
+  "@commonSwitchLanguage": {}
+}
