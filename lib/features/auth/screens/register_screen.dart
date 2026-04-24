@@ -8,7 +8,7 @@ import '../../../shared/widgets/glitch_text.dart';
 import '../../../shared/widgets/decrypted_text.dart';
 import '../widgets/glass_card.dart';
 import '../widgets/auth_field.dart';
-import '../widgets/auth_top_bar.dart';
+import '../../../shared/widgets/grid_scan_background.dart';
 import '../widgets/oauth_buttons.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
@@ -38,7 +38,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg = isDark ? AppColors.darkBackground : AppColors.lightBackground;
     final accent = isDark ? AppColors.darkAccent : AppColors.lightAccent;
     final fg = isDark ? AppColors.darkOnBackground : AppColors.lightOnBackground;
     final muted = fg.withValues(alpha: 0.5);
@@ -47,18 +46,18 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
         : 'assets/logo/logo-day-text-light.svg';
     final l = AppLocalizations.of(context)!;
 
-    return Scaffold(
-      backgroundColor: bg,
-      body: SafeArea(
+    return GridScanBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverFillRemaining(
               hasScrollBody: false,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: Column(
                   children: [
-                    const AuthTopBar(),
                     const Spacer(),
 
                     Padding(
@@ -206,6 +205,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             ),
           ],
         ),
+      ),
       ),
     );
   }

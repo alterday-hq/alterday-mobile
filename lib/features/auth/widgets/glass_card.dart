@@ -20,7 +20,7 @@ class GlassCard extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: Container(
           width: double.infinity,
-          padding: padding ?? const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
+          padding: padding ?? const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
           decoration: BoxDecoration(
             color: surface.withValues(alpha: isDark ? 0.8 : 0.9),
             borderRadius: BorderRadius.circular(16),

@@ -6,20 +6,7 @@ const _kThemeKey = 'theme_mode';
 
 class ThemeNotifier extends Notifier<ThemeMode> {
   @override
-  ThemeMode build() {
-    _loadSaved();
-    return ThemeMode.dark;
-  }
-
-  Future<void> _loadSaved() async {
-    final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getString(_kThemeKey);
-    if (saved == 'light') {
-      state = ThemeMode.light;
-    } else {
-      state = ThemeMode.dark;
-    }
-  }
+  ThemeMode build() => ThemeMode.dark;
 
   Future<void> toggle() async {
     state = state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
