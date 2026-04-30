@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../core/config/app_config.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../shared/widgets/glitch_text.dart';
@@ -18,13 +20,27 @@ class RegisterScreen extends ConsumerStatefulWidget {
   ConsumerState<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterScreenState extends ConsumerState<RegisterScreen> {
+class _RegisterScreenState extends ConsumerState<RegisterScreen>
+    with SingleTickerProviderStateMixin {
   final _subjectController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmController = TextEditingController();
   bool _obscurePassword = true;
   bool _obscureConfirm = true;
+  bool _termsAccepted = false;
+  bool _termsInvalid = false;
+  late final AnimationController _shakeController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 400),
+  );
+  late final Animation<double> _shakeAnimation = TweenSequence([
+    TweenSequenceItem(tween: Tween(begin: 0.0, end: -8.0), weight: 1),
+    TweenSequenceItem(tween: Tween(begin: -8.0, end: 8.0), weight: 2),
+    TweenSequenceItem(tween: Tween(begin: 8.0, end: -5.0), weight: 1),
+    TweenSequenceItem(tween: Tween(begin: -5.0, end: 5.0), weight: 1),
+    TweenSequenceItem(tween: Tween(begin: 5.0, end: 0.0), weight: 1),
+  ]).animate(_shakeController);
 
   @override
   void dispose() {
@@ -32,6 +48,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmController.dispose();
+    _shakeController.dispose();
     super.dispose();
   }
 
@@ -156,10 +173,87 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                             autofillHints: const [AutofillHints.newPassword],
                             textInputAction: TextInputAction.done,
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 16),
+
+                          // Terms & Privacy consent
+                          AnimatedBuilder(
+                            animation: _shakeAnimation,
+                            builder: (context, child) => Transform.translate(
+                              offset: Offset(_shakeAnimation.value, 0),
+                              child: child,
+                            ),
+                            child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: () => setState(() {
+                                  _termsAccepted = !_termsAccepted;
+                                  if (_termsAccepted) _termsInvalid = false;
+                                }),
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 150),
+                                  width: 16,
+                                  height: 16,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3),
+                                    color: _termsAccepted ? accent : Colors.transparent,
+                                    border: Border.all(
+                                      color: _termsInvalid
+                                          ? Colors.red.withValues(alpha: 0.6)
+                                          : _termsAccepted
+                                              ? accent
+                                              : accent.withValues(alpha: 0.3),
+                                      width: 1.5,
+                                    ),
+                                  ),
+                                  child: _termsAccepted
+                                      ? Icon(Icons.check, size: 11, color: isDark ? AppColors.darkBackground : AppColors.lightBackground)
+                                      : null,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: RichText(
+                                  text: TextSpan(
+                                    style: TextStyle(fontFamily: 'GeistMono', fontSize: 10, color: muted, height: 1.4),
+                                    children: [
+                                      TextSpan(text: l.authRegisterTermsConsent),
+                                      WidgetSpan(
+                                        alignment: PlaceholderAlignment.baseline,
+                                        baseline: TextBaseline.alphabetic,
+                                        child: GestureDetector(
+                                          onTap: () => launchUrl(Uri.parse(AppConfig.termsUrl), mode: LaunchMode.externalApplication),
+                                          child: Text(l.authRegisterTermsLink, style: TextStyle(fontFamily: 'GeistMono', fontSize: 10, color: accent.withValues(alpha: 0.7), decoration: TextDecoration.underline, decorationColor: accent.withValues(alpha: 0.4))),
+                                        ),
+                                      ),
+                                      TextSpan(text: l.authRegisterTermsAnd),
+                                      WidgetSpan(
+                                        alignment: PlaceholderAlignment.baseline,
+                                        baseline: TextBaseline.alphabetic,
+                                        child: GestureDetector(
+                                          onTap: () => launchUrl(Uri.parse(AppConfig.privacyUrl), mode: LaunchMode.externalApplication),
+                                          child: Text(l.authRegisterPrivacyLink, style: TextStyle(fontFamily: 'GeistMono', fontSize: 10, color: accent.withValues(alpha: 0.7), decoration: TextDecoration.underline, decorationColor: accent.withValues(alpha: 0.4))),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          ),
+
+                          const SizedBox(height: 16),
 
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (!_termsAccepted) {
+                                setState(() => _termsInvalid = true);
+                                _shakeController.forward(from: 0);
+                                return;
+                              }
+                              // TODO(jacek): wire up signUp logic
+                            },
                             child: Text(l.authRegisterSubmit),
                           ),
                           const SizedBox(height: 20),

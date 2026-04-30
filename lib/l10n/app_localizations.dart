@@ -307,6 +307,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Switch language'**
   String get commonSwitchLanguage;
+
+  /// No description provided for @authRegisterTermsConsent.
+  ///
+  /// In en, this message translates to:
+  /// **'I agree to the '**
+  String get authRegisterTermsConsent;
+
+  /// No description provided for @authRegisterTermsLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get authRegisterTermsLink;
+
+  /// No description provided for @authRegisterTermsAnd.
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get authRegisterTermsAnd;
+
+  /// No description provided for @authRegisterPrivacyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get authRegisterPrivacyLink;
+
+  /// No description provided for @authRegisterTermsError.
+  ///
+  /// In en, this message translates to:
+  /// **'You must accept the terms to continue'**
+  String get authRegisterTermsError;
 }
 
 class _AppLocalizationsDelegate
