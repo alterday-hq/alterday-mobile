@@ -37,5 +37,11 @@
   "commonShowPassword": "Odkryj klucz dostępu",
   "commonHidePassword": "Ukryj klucz dostępu",
   "commonToggleTheme": "Zmień motyw",
-  "commonSwitchLanguage": "Zmień język"
+  "commonSwitchLanguage": "Zmień język",
+
+  "authRegisterTermsConsent": "Akceptuję ",
+  "authRegisterTermsLink": "Regulamin",
+  "authRegisterTermsAnd": " i ",
+  "authRegisterPrivacyLink": "Politykę prywatności",
+  "authRegisterTermsError": "Musisz zaakceptować regulamin, aby kontynuować"
 }

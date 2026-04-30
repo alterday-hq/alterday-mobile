@@ -113,4 +113,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonSwitchLanguage => 'Switch language';
+
+  @override
+  String get authRegisterTermsConsent => 'I agree to the ';
+
+  @override
+  String get authRegisterTermsLink => 'Terms of Service';
+
+  @override
+  String get authRegisterTermsAnd => ' and ';
+
+  @override
+  String get authRegisterPrivacyLink => 'Privacy Policy';
+
+  @override
+  String get authRegisterTermsError => 'You must accept the terms to continue';
 }

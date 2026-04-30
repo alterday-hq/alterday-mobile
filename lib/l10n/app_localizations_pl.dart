@@ -113,4 +113,20 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get commonSwitchLanguage => 'Zmień język';
+
+  @override
+  String get authRegisterTermsConsent => 'Akceptuję ';
+
+  @override
+  String get authRegisterTermsLink => 'Regulamin';
+
+  @override
+  String get authRegisterTermsAnd => ' i ';
+
+  @override
+  String get authRegisterPrivacyLink => 'Politykę prywatności';
+
+  @override
+  String get authRegisterTermsError =>
+      'Musisz zaakceptować regulamin, aby kontynuować';
 }

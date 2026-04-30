@@ -104,5 +104,20 @@
   "@commonToggleTheme": {},
 
   "commonSwitchLanguage": "Switch language",
-  "@commonSwitchLanguage": {}
+  "@commonSwitchLanguage": {},
+
+  "authRegisterTermsConsent": "I agree to the ",
+  "@authRegisterTermsConsent": {},
+
+  "authRegisterTermsLink": "Terms of Service",
+  "@authRegisterTermsLink": {},
+
+  "authRegisterTermsAnd": " and ",
+  "@authRegisterTermsAnd": {},
+
+  "authRegisterPrivacyLink": "Privacy Policy",
+  "@authRegisterPrivacyLink": {},
+
+  "authRegisterTermsError": "You must accept the terms to continue",
+  "@authRegisterTermsError": {}
 }
